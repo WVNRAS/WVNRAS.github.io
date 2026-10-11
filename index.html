@@ -21,12 +21,28 @@
     .sticky-weather[data-state="extreme"]{background:#a51d29}.sticky-weather[data-state="severe"]{background:#b64b1e}.sticky-weather[data-state="moderate"]{background:#93621c}.sticky-weather[data-state="minor"]{background:#396a8a}.sticky-weather[data-state="unknown"]{background:#745e3e}.sticky-weather[data-state="error"]{background:#784d25}.sticky-weather[data-state="clear"]{background:#355c43}
     @media(max-width:760px){.sticky-weather{padding:8px 13px;gap:8px}.sticky-weather strong{font-size:.82rem}.sticky-weather .sw-extra,.sticky-weather .sw-action{font-size:.72rem}}
     @media(max-width:760px){.nav{flex-direction:column;gap:13px}.links{justify-content:center;gap:12px 18px}.hero img{max-height:none}.cards{grid-template-columns:1fr}.intro{padding:40px 18px}.about{flex-direction:column;text-align:center;padding:30px 22px}.about img{width:120px;height:120px}main{padding-top:45px}}
+
+    /* NRAS explainer video: additions only; existing styling is preserved. */
+    .video-section{margin:58px 0 0;scroll-margin-top:var(--sticky-height,130px)}
+    .video-frame{position:relative;aspect-ratio:16/9;max-width:900px;margin:24px auto 0;border:4px solid var(--pine);border-radius:10px;overflow:hidden;background:#101d17;box-shadow:0 7px 22px #233a2c20}
+    .video-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    /* Alert examples gallery: minimal addition, matching existing colors. */
+    .examples-section{margin-top:48px;scroll-margin-top:var(--sticky-height,130px)}
+    .example-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:900px;margin:22px auto 0}
+    .example-card{background:#fffdf7;border:1px solid #d7c9a9;border-radius:9px;padding:16px;box-shadow:0 7px 22px #233a2c0b}
+    .example-card img{display:block;width:100%;height:340px;object-fit:contain;background:#e9e9df;border-radius:5px;user-select:none;-webkit-user-select:none;-webkit-user-drag:none}
+    .example-card h3{margin:12px 0 4px;font-family:Georgia,serif}.example-card p{margin:0;color:#4d5a50;font-size:.92rem}
+    .gallery-note{font-size:.83rem;text-align:center;color:#59665b;margin-top:15px}
+    .nras-links-section{margin-top:55px;scroll-margin-top:var(--sticky-height,130px)}
+    .nras-links-list{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.nras-links-list a{padding:11px 17px;border-radius:5px;background:var(--pine);color:white;text-decoration:none;font-weight:700}
+    .nras-links-list a:hover{background:var(--forest)}
+    @media(max-width:760px){.example-grid{grid-template-columns:1fr}.example-card img{height:360px}}
   </style>
 </head>
 <body>
   <header class="top"><nav class="nav" aria-label="Main navigation">
     <a class="brand" href="#home"><img src="logo.png" alt="NRAS logo"><span>NRAS<small>NEW RIVER ALERT SYSTEM</small></span></a>
-    <div class="links"><a href="#home">Home</a><a href="#services">Our Mission</a><a href="#about">About NRAS</a><a href="https://linktr.ee/NRAS" target="_blank" rel="noopener noreferrer">NRAS Links ↗</a></div>
+    <div class="links"><a href="#home">Home</a><a href="#services">Our Mission</a><a href="#about">About NRAS</a><a href="#see-nras">See NRAS in Action</a><a href="#nras-links">NRAS Links</a></div>
   </nav>
   <button class="sticky-weather" id="sticky-weather" type="button" data-state="unknown" aria-label="View Southern West Virginia weather alerts">
     <span class="sw-icon" id="sw-icon" aria-hidden="true">◌</span>
@@ -54,11 +70,33 @@
       </div>
     </section>
 
-    <section class="about" id="about"><img src="logo.png" alt="New River Alert System emblem"><div><div class="eyebrow">Built for our community</div><h2>About New River Alert System</h2><p>NRAS is a community-oriented initiative focused on weather awareness, radio technology, and off-grid messaging in Southern West Virginia. Our goal is simple: monitor, alert, and connect. Explore our existing resources and updates through our <a href="https://linktr.ee/NRAS" target="_blank" rel="noopener noreferrer" style="color:#ffcd69">NRAS Linktree</a>.</p></div></section>
+
+    <section id="see-nras" class="video-section" aria-labelledby="video-heading">
+      <div class="section-title"><div class="eyebrow" style="color:#7c642e">See NRAS in action</div><h2 id="video-heading">How the New River Alert System Works</h2><p>Watch our video to learn more about NRAS and its weather alert and Meshtastic communications project.</p></div>
+      <div class="video-frame"><iframe src="https://www.youtube-nocookie.com/embed/43qD2C7UPbM" title="How NRAS Works — YouTube video" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </section>
+    <section id="alert-examples" class="examples-section" aria-labelledby="examples-heading">
+      <div class="section-title"><div class="eyebrow" style="color:#7c642e">Example messages</div><h2 id="examples-heading">What NRAS Alerts Look Like</h2><p>Examples of weather-alert messages displayed in the Meshtastic app.</p></div>
+      <div class="example-grid">
+        <article class="example-card"><img src="Text%20Message.jpg" alt="Example Meshtastic message showing a Flash Flood Warning for Raleigh County" loading="lazy" draggable="false"><h3>Flash Flood Warning</h3><p>Example alert message with location and radio signal information.</p></article>
+        <article class="example-card"><img src="Tornado%20Alert.jpg" alt="Example Meshtastic messages showing severe thunderstorm and tornado warnings for Southern West Virginia counties" loading="lazy" draggable="false"><h3>Severe Weather Warnings</h3><p>Examples of thunderstorm and tornado warning messages with affected counties.</p></article>
+      </div>
+      <p class="gallery-note">These are demonstration screenshots, not current warnings. Please refer to the live NWS alert section for current information.</p>
+    </section>
+    <section id="nras-links" class="nras-links-section" aria-labelledby="nras-links-heading">
+      <div class="section-title"><div class="eyebrow" style="color:#7c642e">Explore NRAS</div><h2 id="nras-links-heading">NRAS Links</h2><p>Quick access to our information and resources, right here on our website.</p></div>
+      <div class="nras-links-list"><a href="#home">Home</a><a href="#weather-alerts">Live Weather Alerts</a><a href="#services">Our Mission</a><a href="#see-nras">Watch the Video</a><a href="#alert-examples">Alert Examples</a><a href="#about">About NRAS</a></div>
+    </section>
+    <section class="about" id="about"><img src="logo.png" alt="New River Alert System emblem"><div><div class="eyebrow">Built for our community</div><h2>About New River Alert System</h2><p>NRAS is a community-oriented initiative focused on weather awareness, radio technology, and off-grid messaging in Southern West Virginia. Our goal is simple: monitor, alert, and connect. Learn more about how the system works in the video above.</p></div></section>
   </main>
   <footer class="foot">© <span id="year">2026</span> New River Alert System (NRAS)<small>Independent community project · Not affiliated with NOAA or the National Weather Service</small></footer>
   <script>
     document.getElementById('year').textContent=new Date().getFullYear();
+    // Discourage casual image saving; no website can fully prevent copying public images.
+    document.querySelectorAll('.example-card img').forEach(img=>{
+      img.addEventListener('contextmenu',event=>event.preventDefault());
+      img.addEventListener('dragstart',event=>event.preventDefault());
+    });
     // West Virginia county SAME/FIPS codes. Adjust this set as the NRAS coverage area evolves.
     // Broadly Flatwoods/Braxton and south, including the New River and southern mountain counties.
     const countyFips = new Set(['005','007','011','013','015','019','021','025','035','039','041','043','045','047','053','055','059','063','067','075','079','081','083','087','089','097','099','101','105','109']);
