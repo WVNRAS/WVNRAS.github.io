@@ -50,6 +50,25 @@
     .news-actions,.contact-action{text-align:center;margin:25px auto}
     .contact-button{display:inline-block;background:#2f5d46;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold}
     .contact-button:hover{background:var(--forest)}
+
+    /* Public-facing overview of the NRAS radio alert workflow. */
+    .how-section{margin:58px 0 0;scroll-margin-top:var(--sticky-height,130px)}
+    .how-wrap{max-width:830px;margin:0 auto;background:#f4efe2;border:1px solid #d7c9a9;border-radius:12px;padding:26px 22px}
+    .how-steps{display:grid;gap:0;margin-top:24px}
+    .how-step{display:flex;align-items:center;gap:20px;background:#fff;border:1px solid #d7c9a9;border-radius:9px;padding:18px 20px}
+    .how-icon{display:grid;place-items:center;flex:0 0 64px;height:64px;border-radius:10px;background:#e7eddf;font-size:2rem}
+    .how-step small{display:block;color:#967020;font-weight:800;letter-spacing:.09em;font-size:.72rem}
+    .how-step h3{font-family:Georgia,serif;color:#20372c;font-size:1.24rem;margin:2px 0 4px}
+    .how-step p{margin:0;color:#526052;font-size:.94rem}
+    .how-arrow{text-align:center;color:#967020;font-size:1.3rem;line-height:1.2;padding:8px}
+    .how-arrow span{display:block;color:#66715f;font-size:.78rem}
+    .how-offline{margin-top:22px;text-align:center;background:#20372c;color:#fff;border-radius:9px;padding:26px 22px}
+    .how-offline .how-offline-icon{font-size:2rem;color:#e9ad28}
+    .how-offline h3{font-family:Georgia,serif;margin:6px 0;font-size:1.55rem}
+    .how-offline strong{display:block;color:#e9d5a9;margin-bottom:8px}
+    .how-offline p{margin:0;color:#e6eae2;font-size:.92rem}
+    .how-note{margin:16px 0 0;text-align:center;font-size:.8rem;color:#66715f}
+    @media(max-width:560px){.how-wrap{padding:20px 13px}.how-step{gap:12px;padding:14px}.how-icon{flex-basis:48px;height:48px;font-size:1.55rem}.how-step h3{font-size:1.1rem}}
   </style>
 </head>
 <body>
@@ -80,12 +99,27 @@
       <div class="cards">
         <article class="card"><div class="symbol" aria-hidden="true">⛈️</div><h3>Weather Monitoring</h3><p>Keeping an eye on National Weather Service information and encouraging awareness of changing weather conditions.</p></article>
         <article class="card"><div class="symbol" aria-hidden="true">📡</div><h3>Off-Grid Communications</h3><p>Exploring Meshtastic mesh networking as a way to exchange messages without relying on traditional cellular service.</p></article>
-        
-<article class="card"><div class="symbol" aria-hidden="true">⚡</div><h3>Fast Weather Alerts</h3><p>Our goal is to help residents and travelers throughout Southern West Virginia receive timely National Weather Service alerts. That's why NRAS broadcasts weather alerts over the public Meshtastic LongFast channel, making important weather information accessible to compatible devices in range.</p></article>
-
+        <article class="card"><div class="symbol" aria-hidden="true">⚡</div><h3>Fast Weather Alerts</h3><p>Our goal is to help residents and travelers throughout Southern West Virginia receive timely National Weather Service alerts. That's why NRAS broadcasts weather alerts over the public Meshtastic LongFast channel, making important weather information accessible to compatible devices in range.</p></article>
       </div>
     </section>
 
+
+    <section id="how-nras-works" class="how-section" aria-labelledby="how-heading">
+      <div class="how-wrap">
+        <div class="section-title"><div class="eyebrow" style="color:#967020">New River Alert System</div><h2 id="how-heading">How NRAS Works</h2><p>Rapid Weather Alerts. Fully Offline. Community Focused.</p></div>
+        <div class="how-steps">
+          <article class="how-step"><div class="how-icon" aria-hidden="true">⛈️</div><div><small>STEP 01</small><h3>National Weather Service</h3><p>The NWS issues official weather alerts for affected communities.</p></div></article>
+          <div class="how-arrow" aria-hidden="true">↓<span>Radio alert received</span></div>
+          <article class="how-step"><div class="how-icon" aria-hidden="true">⚡</div><div><small>STEP 02</small><h3>NRAS Rapid Alert Processing</h3><p>NRAS receives official weather alerts directly over the air through radio transmissions, automatically processing them for rapid distribution without relying on an internet connection.</p></div></article>
+          <div class="how-arrow" aria-hidden="true">↓<span>Automated transmission</span></div>
+          <article class="how-step"><div class="how-icon" aria-hidden="true">📡</div><div><small>STEP 03</small><h3>Meshtastic LongFast Network</h3><p>Alerts are broadcast over the public LongFast channel using off-grid radio communications.</p></div></article>
+          <div class="how-arrow" aria-hidden="true">↓<span>Wireless delivery</span></div>
+          <article class="how-step"><div class="how-icon" aria-hidden="true">📱</div><div><small>STEP 04</small><h3>Residents &amp; Travelers</h3><p>Compatible Meshtastic devices within network range can receive weather alerts without cellular service.</p></div></article>
+        </div>
+        <div class="how-offline"><div class="how-offline-icon" aria-hidden="true">◉</div><h3>100% Offline Operation</h3><strong>No Internet. No Cellular Network. No World Wide Web Required.</strong><p>The NRAS radio alert system receives and distributes weather alerts independently of internet connectivity, helping keep communities informed when traditional networks are unavailable.</p></div>
+        <p class="how-note">NRAS is a supplemental weather information service. Alert reception depends on radio coverage and equipment availability. Always follow official NWS guidance. The website's live NWS display requires internet access.</p>
+      </div>
+    </section>
 
     <section id="see-nras" class="video-section" aria-labelledby="video-heading">
       <div class="section-title"><div class="eyebrow" style="color:#7c642e">See NRAS in action</div><h2 id="video-heading">How the New River Alert System Works</h2><p>Watch our video to learn more about NRAS and its weather alert and Meshtastic communications project.</p></div>
