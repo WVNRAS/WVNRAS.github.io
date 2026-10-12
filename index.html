@@ -1,3 +1,4 @@
+```
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,12 +38,24 @@
     .nras-links-list{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.nras-links-list a{padding:11px 17px;border-radius:5px;background:var(--pine);color:white;text-decoration:none;font-weight:700}
     .nras-links-list a:hover{background:var(--forest)}
     @media(max-width:760px){.example-grid{grid-template-columns:1fr}.example-card img{height:360px}}
+
+    /* Separate page-style views for News and Contact. */
+    [hidden]{display:none!important}
+    .subpage{min-height:55vh;padding-top:75px}
+    .news-list{display:grid;gap:18px;max-width:850px;margin:25px auto}
+    .news-entry{background:#fffdf7;border:1px solid #d7c9a9;border-left:5px solid var(--pine);border-radius:9px;padding:24px;box-shadow:0 7px 22px #233a2c0b}
+    .news-entry time{display:block;font-size:.85rem;color:#59665b}
+    .news-entry h3{font-family:Georgia,serif;margin:6px 0 10px;font-size:1.4rem}
+    .news-entry p{margin:0;white-space:pre-wrap;color:#4d5a50}
+    .news-actions,.contact-action{text-align:center;margin:25px auto}
+    .contact-button{display:inline-block;background:#2f5d46;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold}
+    .contact-button:hover{background:var(--forest)}
   </style>
 </head>
 <body>
   <header class="top"><nav class="nav" aria-label="Main navigation">
     <a class="brand" href="#home"><img src="logo.png" alt="NRAS logo"><span>NRAS<small>NEW RIVER ALERT SYSTEM</small></span></a>
-    <div class="links"><a href="#home">Home</a><a href="#services">Our Mission</a><a href="#about">About NRAS</a><a href="#see-nras">See NRAS in Action</a><a href="#nras-links">NRAS Links</a></div>
+    <div class="links"><a href="#home">Home</a><a href="#services">Our Mission</a><a href="#about">About NRAS</a><a href="#see-nras">See NRAS in Action</a><a href="#news">News &amp; Updates</a><a href="#contact">Contact</a></div>
   </nav>
   <button class="sticky-weather" id="sticky-weather" type="button" data-state="unknown" aria-label="View Southern West Virginia weather alerts">
     <span class="sw-icon" id="sw-icon" aria-hidden="true">◌</span>
@@ -50,6 +63,7 @@
     <span class="sw-action">View details ↓</span>
   </button>
   </header>
+  <div id="home-view">
   <section class="hero" id="home" aria-label="New River Alert System banner"><img src="banner.png" alt="New River Alert System banner featuring the New River Gorge, NOAA weather radio and Meshtastic communications"></section>
   <section class="intro"><div class="eyebrow">Southern West Virginia · Community Focused</div><h1>Monitor. Alert. Connect.</h1><p>Helping our communities stay informed through weather monitoring, amateur-radio expertise, and resilient off-grid communications.</p><a class="button" href="#services">Explore NRAS</a></section>
   <main>
@@ -83,11 +97,18 @@
       </div>
       <p class="gallery-note">These are demonstration screenshots, not current warnings. Please refer to the live NWS alert section for current information.</p>
     </section>
-    <section id="nras-links" class="nras-links-section" aria-labelledby="nras-links-heading">
-      <div class="section-title"><div class="eyebrow" style="color:#7c642e">Explore NRAS</div><h2 id="nras-links-heading">NRAS Links</h2><p>Quick access to our information and resources, right here on our website.</p></div>
-      <div class="nras-links-list"><a href="#home">Home</a><a href="#weather-alerts">Live Weather Alerts</a><a href="#services">Our Mission</a><a href="#see-nras">Watch the Video</a><a href="#alert-examples">Alert Examples</a><a href="#about">About NRAS</a></div>
-    </section>
     <section class="about" id="about"><img src="logo.png" alt="New River Alert System emblem"><div><div class="eyebrow">Built for our community</div><h2>About New River Alert System</h2><p>NRAS is a community-oriented initiative focused on weather awareness, radio technology, and off-grid messaging in Southern West Virginia. Our goal is simple: monitor, alert, and connect. Learn more about how the system works in the video above.</p></div></section>
+  </main>
+  </div>
+  <main id="news-view" class="subpage" hidden>
+    <div class="section-title"><div class="eyebrow" style="color:#7c642e">Community announcements</div><h2>NRAS News &amp; Updates</h2><p>Updates and announcements from the New River Alert System.</p></div>
+    <div id="news-status" role="status" aria-live="polite">Loading announcements…</div>
+    <div id="news-list" class="news-list"></div>
+    <div class="news-actions"><button id="news-toggle" class="refresh-btn" type="button" hidden>View All Updates</button></div>
+  </main>
+  <main id="contact-view" class="subpage" hidden>
+    <div class="section-title"><div class="eyebrow" style="color:#7c642e">Get in touch</div><h2>Contact NRAS</h2><p>Have a question about the New River Alert System? Feel free to reach out by email.</p></div>
+    <div class="contact-action"><a class="contact-button" href="mailto:nraswestvirginia@gmail.com">Send an Email</a></div>
   </main>
   <footer class="foot">© <span id="year">2026</span> New River Alert System (NRAS)<small>Independent community project · Not affiliated with NOAA or the National Weather Service</small></footer>
   <script>
@@ -184,23 +205,85 @@
     setInterval(loadAlerts,5*60*1000);
   </script>
   
-<section id="contact" style="text-align:center; padding:35px 20px;">
-  <h2>Contact NRAS</h2>
-  <p>Have a question about the New River Alert System?
-     Feel free to reach out by email.</p>
-
-  <a href="mailto:nraswestvirginia@gmail.com"
-     style="display:inline-block; background:#2F5D46;
-            color:#fff; padding:12px 24px;
-            border-radius:8px; text-decoration:none;
-            font-weight:bold;">
-    Send an Email
-  </a>
-</section>
-
 <div style="text-align:center; font-size:11px; color:#777; padding:12px 20px; line-height:1.6; max-width:950px; margin:0 auto;">
   <strong>Disclaimer:</strong> NRAS is an independent, supplemental weather information service and is not affiliated with the NWS or NOAA. Alerts may be delayed, incomplete, inaccurate, or unavailable. NRAS does not guarantee alert accuracy or delivery. Do not rely solely on NRAS for emergency information. Always consult official NWS alerts and local emergency authorities.
 </div>
 
+
+  <script>
+    // Tabs use the existing page; the public NWS alert code above is unchanged.
+    const homeView = document.getElementById('home-view');
+    const newsView = document.getElementById('news-view');
+    const contactView = document.getElementById('contact-view');
+    const newsList = document.getElementById('news-list');
+    const newsStatus = document.getElementById('news-status');
+    const newsToggle = document.getElementById('news-toggle');
+    let announcements = [];
+    let showAllNews = false;
+
+    function renderNews() {
+      newsList.replaceChildren();
+      const visible = showAllNews ? announcements : announcements.slice(0, 3);
+      for (const item of visible) {
+        const article = document.createElement('article');
+        article.className = 'news-entry';
+        const date = document.createElement('time');
+        date.dateTime = item.date;
+        const parsed = new Date(item.date + 'T12:00:00');
+        date.textContent = Number.isNaN(parsed.getTime()) ? item.date : parsed.toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
+        const title = document.createElement('h3');
+        title.textContent = item.title;
+        const message = document.createElement('p');
+        message.textContent = item.message;
+        article.append(date,title,message);
+        newsList.appendChild(article);
+      }
+      newsStatus.textContent = announcements.length ? '' : 'No announcements have been posted yet.';
+      newsToggle.hidden = announcements.length <= 3;
+      newsToggle.textContent = showAllNews ? 'Show Latest 3' : 'View All Updates';
+    }
+
+    async function loadNews() {
+      try {
+        const response = await fetch('news.json', {cache:'no-cache'});
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const data = await response.json();
+        if (!Array.isArray(data)) throw new Error('Expected an array of announcements');
+        announcements = data.filter(item => item && typeof item.date === 'string' && typeof item.title === 'string' && typeof item.message === 'string')
+          .sort((a,b) => b.date.localeCompare(a.date));
+        renderNews();
+      } catch(error) {
+        newsStatus.textContent = 'Announcements are temporarily unavailable. Please try again later.';
+        console.warn('NRAS news fetch failed:',error);
+      }
+    }
+
+    newsToggle.addEventListener('click', () => {showAllNews = !showAllNews;renderNews();});
+
+    function showPage() {
+      const hash = window.location.hash || '#home';
+      const isNews = hash === '#news';
+      const isContact = hash === '#contact';
+      homeView.hidden = isNews || isContact;
+      newsView.hidden = !isNews;
+      contactView.hidden = !isContact;
+      // Preserve original anchor navigation within the homepage.
+      if (isNews || isContact || hash === '#home') window.scrollTo({top:0,behavior:'instant'});
+      else {
+        const target = document.getElementById(hash.slice(1));
+        if (target) requestAnimationFrame(() => target.scrollIntoView());
+      }
+      if (typeof updateStickyOffset === 'function') updateStickyOffset();
+    }
+
+    window.addEventListener('hashchange',showPage);
+    // The sticky alert bar must take visitors to the visible alerts section.
+    document.getElementById('sticky-weather').addEventListener('click', () => {
+      if (homeView.hidden) window.location.hash = '#weather-alerts';
+    });
+    loadNews();
+    showPage();
+  </script>
 </body>
 </html>
+```
